@@ -11,17 +11,17 @@ export const create = async (ctx) => {
     }
 
     const [type, token] = ctx.headers.authorization.split(" ")
-    console.log(token)
+    
 
     try{
         const data = jwt.verify(token, process.env.JWT_SECRET)   
 
   
 
-        if(!ctx.request.body.homeTeamScore && !ctx.request.body.awayTeamScore){
-            ctx.status = 400
-            return
-        }
+        // if(!ctx.request.body.homeTeamScore && !ctx.request.body.awayTeamScore){
+        //     ctx.status = 400
+        //     return
+        // }
 
         const userId = data.sub
         const { gameId } = ctx.request.body
